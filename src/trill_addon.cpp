@@ -24,25 +24,43 @@ public:
     TrillWrapper(const Napi::CallbackInfo& info) : Napi::ObjectWrap<TrillWrapper>(info) {
         Napi::Env env = info.Env();
 
-        // Hardcoded values: bus 1, CRAFT device
-        const int i2c_bus = 1;
-        printf("Attempting to setup Trill CRAFT device on bus %d\n", i2c_bus);
+        // Check if address parameter is provided
+        if (info.Length() < 1) {
+            Napi::TypeError::New(env, "Address parameter is required")
+                .ThrowAsJavaScriptException();
+            return;
+        }
+
+        // Get the address parameter
+        uint8_t address = info[0].As<Napi::Number>().Uint32Value();
+        const int i2c_bus = 1;  // Hardcoded bus value
+        
+        printf("Attempting to setup Trill CRAFT device on bus %d at address 0x%02X\n", i2c_bus, address);
         
         trill = std::make_unique<Trill>();
-        int result = trill->setup(i2c_bus, Trill::CRAFT);
+        int result = trill->setup(i2c_bus, Trill::CRAFT, address);
         
         if (result != 0) {
             char errorMsg[256];
             snprintf(errorMsg, sizeof(errorMsg), 
-                    "Failed to initialize Trill device. Error code: %d, errno: %d (%s)", 
-                    result, errno, strerror(errno));
+                    "Failed to initialize Trill device at address 0x%02X. Error code: %d, errno: %d (%s)", 
+                    address, result, errno, strerror(errno));
             Napi::Error::New(env, errorMsg).ThrowAsJavaScriptException();
             return;
         }
         
         // Set the device to DIFF mode
-        trill->setMode(Trill::DIFF);
-        printf("Trill device successfully initialized in RAW mode\n");
+        result = trill->setMode(Trill::DIFF);
+        if (result != 0) {
+            char errorMsg[256];
+            snprintf(errorMsg, sizeof(errorMsg), 
+                    "Failed to set DIFF mode for device at address 0x%02X. Error code: %d", 
+                    address, result);
+            Napi::Error::New(env, errorMsg).ThrowAsJavaScriptException();
+            return;
+        }
+
+        printf("Trill device at address 0x%02X successfully initialized in DIFF mode\n", address);
     }
 
 private:
