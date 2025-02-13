@@ -1,35 +1,27 @@
-const TrillAddon = require('bindings')('trill-addon');
+const trill = require('./build/Release/trill');
 
-class Trill {
-    constructor() {
-        this.device = new TrillAddon.TrillWrapper();
-    }
-
-    setup(bus, deviceName, address) {
-        return this.device.setup(bus, deviceName, address);
-    }
-
-    read() {
-        this.device.readI2C();
-        const numTouches = this.device.getNumTouches();
-        const touches = [];
-
-        for (let i = 0; i < numTouches; i++) {
-            const touch = {
-                location: this.device.getTouchLocation(i)
-            };
-            if (this.device.is2D()) {
-                touch.horizontalLocation = this.device.getTouchHorizontalLocation(i);
-            }
-            touches.push(touch);
+try {
+    console.log("Connecting to Trill CRAFT device...");
+    const device = new trill.Trill();
+    
+    // Print device details after connection
+    device.printDetails();
+    
+    function readAndPrintChannels() {
+        // Read new data from the device
+        device.readI2C();
+        
+        // Get raw data from all channels
+        const rawData = device.getRawData();
+        if (rawData.length > 0) {
+            console.log('Channel values:', rawData);
         }
-
-        return {
-            numTouches,
-            touches,
-            rawData: this.device.getRawData()
-        };
     }
-}
 
-module.exports = Trill;
+    // Read sensor every 50ms
+    setInterval(readAndPrintChannels, 50);
+
+} catch (err) {
+    console.error('Failed to initialize Trill:', err.message);
+    process.exit(1);
+}

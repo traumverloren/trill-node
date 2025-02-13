@@ -333,13 +333,13 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.S FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,trill-addon.target.mk)))),)
-  include trill-addon.target.mk
+                 $(join ^,trill.target.mk)))),)
+  include trill.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /home/pi/.nvm/versions/node/v22.14.0/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/pi/.cache/node-gyp/22.14.0" "-Dnode_gyp_dir=/home/pi/.nvm/versions/node/v22.14.0/lib/node_modules/node-gyp" "-Dnode_lib_file=/home/pi/.cache/node-gyp/22.14.0/<(target_arch)/node.lib" "-Dmodule_root_dir=/home/pi/projects/trill-node" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/home/pi/projects/trill-node/build/config.gypi -I/home/pi/.nvm/versions/node/v22.14.0/lib/node_modules/node-gyp/addon.gypi -I/home/pi/.cache/node-gyp/22.14.0/include/node/common.gypi "--toplevel-dir=." binding.gyp
-Makefile: $(srcdir)/build/config.gypi $(srcdir)/../../.nvm/versions/node/v22.14.0/lib/node_modules/node-gyp/addon.gypi $(srcdir)/../../.cache/node-gyp/22.14.0/include/node/common.gypi $(srcdir)/binding.gyp
+cmd_regen_makefile = cd $(srcdir); /home/pi/projects/trill-node/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/pi/.cache/node-gyp/22.14.0" "-Dnode_gyp_dir=/home/pi/projects/trill-node/node_modules/node-gyp" "-Dnode_lib_file=/home/pi/.cache/node-gyp/22.14.0/<(target_arch)/node.lib" "-Dmodule_root_dir=/home/pi/projects/trill-node" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/home/pi/projects/trill-node/build/config.gypi -I/home/pi/projects/trill-node/node_modules/node-gyp/addon.gypi -I/home/pi/.cache/node-gyp/22.14.0/include/node/common.gypi "--toplevel-dir=." binding.gyp
+Makefile: $(srcdir)/node_modules/node-gyp/addon.gypi $(srcdir)/binding.gyp $(srcdir)/../../.cache/node-gyp/22.14.0/include/node/common.gypi $(srcdir)/build/config.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included

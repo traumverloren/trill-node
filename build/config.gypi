@@ -451,7 +451,16 @@
     "v8_use_siphash": 1,
     "want_separate_host_toolset": 0,
     "nodedir": "/home/pi/.cache/node-gyp/22.14.0",
-    "python": "/usr/bin/python3",
-    "standalone_static_library": 1
+    "standalone_static_library": 1,
+    "user_agent": "npm/10.9.2 node/v22.14.0 linux arm64 workspaces/false",
+    "userconfig": "/home/pi/.npmrc",
+    "local_prefix": "/home/pi/projects/trill-node",
+    "prefix": "/home/pi/.nvm/versions/node/v22.14.0",
+    "npm_version": "10.9.2",
+    "cache": "/home/pi/.npm",
+    "node_gyp": "/home/pi/.nvm/versions/node/v22.14.0/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
+    "globalconfig": "/home/pi/.nvm/versions/node/v22.14.0/etc/npmrc",
+    "init_module": "/home/pi/.npm-init.js",
+    "global_prefix": "/home/pi/.nvm/versions/node/v22.14.0"
   }
 }
