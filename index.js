@@ -2,7 +2,7 @@ const trill = require('./build/Release/trill');
 
 try {
     // Create array of sensor addresses
-    const sensorAddresses = [0x30];
+    const sensorAddresses = [0x30, 0x31, 0x32, 0x36];
     const sensors = [];
 
     // Initialize each sensor
@@ -25,7 +25,7 @@ try {
     }
 
     // Read sensors every 50ms
-    setInterval(readAndPrintChannels, 50);
+    setInterval(readAndPrintChannels, 200);
 
 } catch (err) {
     console.error('Failed to initialize Trill devices:', err.message);
