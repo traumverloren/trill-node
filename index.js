@@ -12,20 +12,21 @@ try {
         device.printDetails();
         sensors.push(device);
     }
-    
+
     function readAndPrintChannels() {
         // Read from each sensor
         sensors.forEach((device, index) => {
             device.readI2C();
-            const rawData = device.getRawData();
-            if (rawData.length > 0) {
-                console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, rawData);
+            const rawDataArray = device.getRawData();
+            const hasTouch = (currentValue) => currentValue > 0;
+            if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
+                console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, rawDataArray);
             }
         });
     }
 
     // Read sensors every 50ms
-    setInterval(readAndPrintChannels, 200);
+    setInterval(readAndPrintChannels, 50);
 
 } catch (err) {
     console.error('Failed to initialize Trill devices:', err.message);
