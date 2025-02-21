@@ -7,5 +7,5 @@ A sound art installation for Future Frontend 2025
 ## Installation
 
 ```bash
-node run build
+npm run build
 ```
