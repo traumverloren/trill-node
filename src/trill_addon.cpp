@@ -3,24 +3,31 @@
 #include <memory>
 #include <string>
 
+// This class wraps the C++ Trill class to make it available in Node.js
 class TrillWrapper : public Napi::ObjectWrap<TrillWrapper> {
 public:
+    // Define the JavaScript class with these methods
     static Napi::Object Init(Napi::Env env, Napi::Object exports) {
         Napi::Function func = DefineClass(env, "Trill", {
+            // Subset of needed methods from Trill class
             InstanceMethod("readI2C", &TrillWrapper::ReadI2C),
             InstanceMethod("getNumChannels", &TrillWrapper::GetNumChannels),
             InstanceMethod("getRawData", &TrillWrapper::GetRawData),
             InstanceMethod("printDetails", &TrillWrapper::PrintDetails)
         });
 
+
+        // Sets up the constructor for creating new instances
         Napi::FunctionReference* constructor = new Napi::FunctionReference();
         *constructor = Napi::Persistent(func);
         env.SetInstanceData(constructor);
 
+        // Makes the class available as exports.Trill
         exports.Set("Trill", func);
         return exports;
     }
 
+    // This constructor runs when 'new Trill()' is called in JavaScript
     TrillWrapper(const Napi::CallbackInfo& info) : Napi::ObjectWrap<TrillWrapper>(info) {
         Napi::Env env = info.Env();
 
@@ -31,7 +38,7 @@ public:
             return;
         }
 
-        // Get the address parameter
+        // Get the address parameter & convert to uint8_t
         uint8_t address = info[0].As<Napi::Number>().Uint32Value();
         const int i2c_bus = 1;  // Hardcoded bus value
         
@@ -66,6 +73,7 @@ public:
 private:
     std::unique_ptr<Trill> trill;
 
+
     Napi::Value ReadI2C(const Napi::CallbackInfo& info) {
         Napi::Env env = info.Env();
         int result = trill->readI2C();
@@ -94,6 +102,7 @@ private:
     }
 };
 
+// This function initializes the TrillWrapper class
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
     return TrillWrapper::Init(env, exports);
 }
