@@ -1,1 +1,0 @@
-cmd_Release/obj.target/trill.node := g++ -o Release/obj.target/trill.node -shared -pthread -rdynamic  -Wl,-soname=trill.node -Wl,--start-group Release/obj.target/trill/src/trill_addon.o Release/obj.target/trill/lib/Trill.o -Wl,--end-group -li2c
