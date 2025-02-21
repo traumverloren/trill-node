@@ -1,1 +1,11 @@
-# A Node Wrapper for many, many Trill conductive touch sensors
+# Trill Node
+
+A Node Wrapper for many, many Trill conductive touch sensors
+
+A sound art installation for Future Frontend 2025
+
+## Installation
+
+```bash
+node run build
+```
