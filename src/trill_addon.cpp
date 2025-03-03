@@ -13,7 +13,8 @@ public:
             InstanceMethod("readI2C", &TrillWrapper::ReadI2C),
             InstanceMethod("getNumChannels", &TrillWrapper::GetNumChannels),
             InstanceMethod("getRawData", &TrillWrapper::GetRawData),
-            InstanceMethod("printDetails", &TrillWrapper::PrintDetails)
+            InstanceMethod("printDetails", &TrillWrapper::PrintDetails),
+            InstanceMethod("setNoiseThreshold", &TrillWrapper::SetNoiseThreshold)
         });
 
 
@@ -99,6 +100,26 @@ private:
         Napi::Env env = info.Env();
         trill->printDetails();
         return env.Undefined();
+    }
+
+        Napi::Value SetNoiseThreshold(const Napi::CallbackInfo& info) {
+        Napi::Env env = info.Env();
+
+        // Check if threshold parameter is provided
+        if (info.Length() < 1) {
+            Napi::TypeError::New(env, "Threshold parameter is required")
+                .ThrowAsJavaScriptException();
+            return env.Undefined();
+        }
+
+        // Get the threshold parameter & convert to float
+        float threshold = info[0].As<Napi::Number>().FloatValue();
+        
+        // Call the C++ method
+        int result = trill->setNoiseThreshold(threshold);
+        
+        // Return the result
+        return Napi::Number::New(env, result);
     }
 };
 
