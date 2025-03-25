@@ -1,9 +1,10 @@
 const trill = require('./build/Release/trill');
+const dgram = require('node:dgram');
+const client = dgram.createSocket('udp4');
 
 try {
     // Create array of sensor addresses
-    const sensorAddresses = [0x30];
-//    const sensorAddresses = [0x30, 0x31, 0x32, 0x36];
+    const sensorAddresses = [0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37];
     const sensors = [];
 
     // Initialize each sensor
@@ -22,13 +23,15 @@ try {
             const rawDataArray = device.getRawData();
             const hasTouch = (currentValue) => currentValue > 0;
             if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
-                console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, rawDataArray);
+                console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, {...rawDataArray});
             }
         });
+	const message = [0.5,0.5,0.9,0.9];
+	client.send(message.join(" "), 3002, 'localhost');
     }
 
     // Read sensors every 50ms
-    setInterval(readAndPrintChannels, 50);
+    setInterval(readAndPrintChannels, 2000);
 
 } catch (err) {
     console.error('Failed to initialize Trill devices:', err.message);
