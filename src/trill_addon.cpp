@@ -14,7 +14,8 @@ public:
             InstanceMethod("getNumChannels", &TrillWrapper::GetNumChannels),
             InstanceMethod("getRawData", &TrillWrapper::GetRawData),
             InstanceMethod("printDetails", &TrillWrapper::PrintDetails),
-            InstanceMethod("setNoiseThreshold", &TrillWrapper::SetNoiseThreshold)
+            InstanceMethod("setNoiseThreshold", &TrillWrapper::SetNoiseThreshold),
+            InstanceMethod("setPrescaler", &TrillWrapper::SetPrescaler)
         });
 
 
@@ -121,6 +122,26 @@ private:
         // Return the result
         return Napi::Number::New(env, result);
     }
+
+   Napi::Value SetPrescaler(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+    // Check if prescaler parameter is provided
+    if (info.Length() < 1) {
+        Napi::TypeError::New(env, "Prescaler parameter is required")
+            .ThrowAsJavaScriptException();
+        return env.Undefined();
+    }
+
+    // Get the prescaler parameter & convert to uint8_t
+    uint8_t prescaler = info[0].As<Napi::Number>().Uint32Value();
+    
+    // Call the C++ method
+    int result = trill->setPrescaler(prescaler);
+    
+    // Return the result
+    return Napi::Number::New(env, result);
+   }
 };
 
 // This function initializes the TrillWrapper class
