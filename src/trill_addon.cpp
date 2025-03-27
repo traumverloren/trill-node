@@ -15,7 +15,8 @@ public:
             InstanceMethod("getRawData", &TrillWrapper::GetRawData),
             InstanceMethod("printDetails", &TrillWrapper::PrintDetails),
             InstanceMethod("setNoiseThreshold", &TrillWrapper::SetNoiseThreshold),
-            InstanceMethod("setPrescaler", &TrillWrapper::SetPrescaler)
+            InstanceMethod("setPrescaler", &TrillWrapper::SetPrescaler),
+	    InstanceMethod("updateBaseline", &TrillWrapper::UpdateBaseline)
         });
 
 
@@ -142,6 +143,16 @@ private:
     // Return the result
     return Napi::Number::New(env, result);
    }
+
+    Napi::Value UpdateBaseline(const Napi::CallbackInfo& info) {
+        Napi::Env env = info.Env();
+        
+        // Call the C++ method
+        int result = trill->updateBaseline();
+        
+        // Return the result
+        return Napi::Number::New(env, result);
+    }
 };
 
 // This function initializes the TrillWrapper class
