@@ -24,24 +24,26 @@ try {
     }
 
     function readAndPrintChannels() {
-	let touchedLocations = [];
+        let touchedLocations = [];
         // Read from each sensor
         sensors.forEach((device, index) => {
             device.readI2C();
             const rawDataArray = device.getRawData();
             const hasTouch = (currentValue) => currentValue > 0.01;
+            
             if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
-		const address = sensorAddresses[index].toString(16);
+                const address = sensorAddresses[index].toString(16);
                 // console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, {...rawDataArray});
-		const touchedIndexes = rawDataArray.reduce((acc, value, index) => acc.concat(value > 0.01 && value !== 8 && value !== 0.03125 ? [address,index,value] : []), []);
-		// console.log(touchedIndexes);
-		touchedLocations.push(touchedIndexes);
-           }
+                const touchedIndexes = rawDataArray.reduce((acc, value, index) => acc.concat(value > 0.01 && value !== 8 && value !== 0.03125 ? [address,index,value] : []), []);
+                // console.log(touchedIndexes);
+                touchedLocations.push(touchedIndexes);
+            }
         });
-	if (touchedLocations.length > 0) {
-	   console.log(touchedLocations.flat(Infinity).join(" "));
-           client.send(touchedLocations.flat(Infinity).join(" "), 3002, 'localhost');
-	}
+        
+        if (touchedLocations.length > 0) {
+        console.log(touchedLocations.flat(Infinity).join(" "));
+            client.send(touchedLocations.flat(Infinity).join(" "), 3002, 'localhost');
+        }
     }
 
     // Read sensors every 50ms

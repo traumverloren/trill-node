@@ -1,0 +1,451 @@
+[
+  {
+    "address": "0x30",
+    "locations": [
+      {
+        "id": 0,
+        "coordinates": [
+          0.014,
+          0.106
+        ]
+      },
+      {
+        "id": 1,
+        "coordinates": [
+          0.021,
+          0.183
+        ]
+      },
+      {
+        "id": 2,
+        "coordinates": [
+          0.014,
+          0.25
+        ]
+      },
+      {
+        "id": 3,
+        "coordinates": [
+          0.014,
+          0.423
+        ]
+      },
+      {
+        "id": 4,
+        "coordinates": [
+          0.01,
+          0.538
+        ]
+      },
+      {
+        "id": 5,
+        "coordinates": [
+          0.011,
+          0.615
+        ]
+      },
+      {
+        "id": 6,
+        "coordinates": [
+          0.022,
+          0.692
+        ]
+      },
+      {
+        "id": 7,
+        "coordinates": [
+          0.001,
+          0.798
+        ]
+      },
+      {
+        "id": 8,
+        "coordinates": [
+          0.013,
+          0.962
+        ]
+      },
+      {
+        "id": 9,
+        "coordinates": [
+          0.028,
+          0.019
+        ]
+      },
+      {
+        "id": 10,
+        "coordinates": [
+          0.042,
+          0.125
+        ]
+      },
+      {
+        "id": 11,
+        "coordinates": [
+          0.056,
+          0.173
+        ]
+      },
+      {
+        "id": 12,
+        "coordinates": [
+          0.042,
+          0.25
+        ]
+      },
+      {
+        "id": 13,
+        "coordinates": [
+          0.069,
+          0.471
+        ]
+      },
+      {
+        "id": 14,
+        "coordinates": [
+          0.069,
+          0.625
+        ]
+      },
+      {
+        "id": 15,
+        "coordinates": [
+          0.049,
+          0.769
+        ]
+      },
+      {
+        "id": 16,
+        "coordinates": [
+          0.09,
+          0.942
+        ]
+      },
+      {
+        "id": 17,
+        "coordinates": [
+          0.09,
+          1
+        ]
+      },
+      {
+        "id": 18,
+        "coordinates": [
+          0.083,
+          0.038
+        ]
+      },
+      {
+        "id": 19,
+        "coordinates": [
+          0.153,
+          0.096
+        ]
+      },
+      {
+        "id": 20,
+        "coordinates": [
+          0.083,
+          0.183
+        ]
+      },
+      {
+        "id": 21,
+        "coordinates": [
+          0.083,
+          0.317
+        ]
+      },
+      {
+        "id": 22,
+        "coordinates": [
+          0.139,
+          0.51
+        ]
+      },
+      {
+        "id": 23,
+        "coordinates": [
+          0.181,
+          0.606
+        ]
+      },
+      {
+        "id": 24,
+        "coordinates": [
+          0.125,
+          0.712
+        ]
+      },
+      {
+        "id": 25,
+        "coordinates": [
+          0.09,
+          0.76
+        ]
+      },
+      {
+        "id": 26,
+        "coordinates": [
+          0.194,
+          0.731
+        ]
+      },
+      {
+        "id": 27,
+        "coordinates": [
+          0.125,
+          0.779
+        ]
+      },
+      {
+        "id": 28,
+        "coordinates": [
+          0.167,
+          0.904
+        ]
+      },
+      {
+        "id": 29,
+        "coordinates": [
+          0.16,
+          0.981
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x31",
+    "locations": [
+      {
+        "id": 0,
+        "coordinates": [
+          0.118,
+          0.067
+        ]
+      },
+      {
+        "id": 1,
+        "coordinates": [
+          0.208,
+          0.077
+        ]
+      },
+      {
+        "id": 2,
+        "coordinates": [
+          0.153,
+          0.231
+        ]
+      },
+      {
+        "id": 3,
+        "coordinates": [
+          0.146,
+          0.308
+        ]
+      },
+      {
+        "id": 4,
+        "coordinates": [
+          0.125,
+          0.365
+        ]
+      },
+      {
+        "id": 5,
+        "coordinates": [
+          0.139,
+          0.423
+        ]
+      },
+      {
+        "id": 6,
+        "coordinates": [
+          0.201,
+          0.519
+        ]
+      },
+      {
+        "id": 7,
+        "coordinates": [
+          0.188,
+          0.567
+        ]
+      },
+      {
+        "id": 8,
+        "coordinates": [
+          0.236,
+          0.663
+        ]
+      },
+      {
+        "id": 9,
+        "coordinates": [
+          0.194,
+          0.721
+        ]
+      },
+      {
+        "id": 10,
+        "coordinates": [
+          0.222,
+          0.731
+        ]
+      },
+      {
+        "id": 11,
+        "coordinates": [
+          0.257,
+          0.769
+        ]
+      },
+      {
+        "id": 12,
+        "coordinates": [
+          0.229,
+          0.865
+        ]
+      },
+      {
+        "id": 13,
+        "coordinates": [
+          0.236,
+          0.923
+        ]
+      },
+      {
+        "id": 14,
+        "coordinates": [
+          0.25,
+          0.981
+        ]
+      },
+      {
+        "id": 15,
+        "coordinates": [
+          0.333,
+          0.981
+        ]
+      },
+      {
+        "id": 16,
+        "coordinates": [
+          0.347,
+          0.846
+        ]
+      },
+      {
+        "id": 17,
+        "coordinates": [
+          0.34,
+          0.654
+        ]
+      },
+      {
+        "id": 18,
+        "coordinates": [
+          0.333,
+          0.558
+        ]
+      },
+      {
+        "id": 19,
+        "coordinates": [
+          0.306,
+          0.471
+        ]
+      },
+      {
+        "id": 20,
+        "coordinates": [
+          0.25,
+          0.385
+        ]
+      },
+      {
+        "id": 21,
+        "coordinates": [
+          0.292,
+          0.269
+        ]
+      },
+      {
+        "id": 22,
+        "coordinates": [
+          0.278,
+          0.904
+        ]
+      },
+      {
+        "id": 23,
+        "coordinates": [
+          0.236,
+          0.846
+        ]
+      },
+      {
+        "id": 24,
+        "coordinates": [
+          0.264,
+          0.788
+        ]
+      },
+      {
+        "id": 25,
+        "coordinates": [
+          0.306,
+          0.683
+        ]
+      },
+      {
+        "id": 26,
+        "coordinates": [
+          0.278,
+          0.558
+        ]
+      },
+      {
+        "id": 27,
+        "coordinates": [
+          0.181,
+          0.471
+        ]
+      },
+      {
+        "id": 28,
+        "coordinates": [
+          0.194,
+          0.327
+        ]
+      },
+      {
+        "id": 29,
+        "coordinates": [
+          0.25,
+          0.24
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0xNaN",
+    "locations": [
+      {
+        "id": null,
+        "coordinates": [
+          null,
+          null
+        ]
+      },
+      {
+        "id": null,
+        "coordinates": [
+          null,
+          null
+        ]
+      }
+    ]
+  }
+]

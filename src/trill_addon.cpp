@@ -16,7 +16,7 @@ public:
             InstanceMethod("printDetails", &TrillWrapper::PrintDetails),
             InstanceMethod("setNoiseThreshold", &TrillWrapper::SetNoiseThreshold),
             InstanceMethod("setPrescaler", &TrillWrapper::SetPrescaler),
-	    InstanceMethod("updateBaseline", &TrillWrapper::UpdateBaseline)
+	        InstanceMethod("updateBaseline", &TrillWrapper::UpdateBaseline)
         });
 
 
@@ -104,15 +104,15 @@ private:
         return env.Undefined();
     }
 
-        Napi::Value SetNoiseThreshold(const Napi::CallbackInfo& info) {
-        Napi::Env env = info.Env();
+    Napi::Value SetNoiseThreshold(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
 
-        // Check if threshold parameter is provided
-        if (info.Length() < 1) {
-            Napi::TypeError::New(env, "Threshold parameter is required")
-                .ThrowAsJavaScriptException();
-            return env.Undefined();
-        }
+    // Check if threshold parameter is provided
+    if (info.Length() < 1) {
+        Napi::TypeError::New(env, "Threshold parameter is required")
+            .ThrowAsJavaScriptException();
+        return env.Undefined();
+    }
 
         // Get the threshold parameter & convert to float
         float threshold = info[0].As<Napi::Number>().FloatValue();
