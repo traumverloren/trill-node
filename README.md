@@ -9,3 +9,24 @@ A sound art installation for Future Frontend 2025
 ```bash
 npm run build
 ```
+
+
+
+
+## RUNNING
+
+### Setup pure data patch to run on boot
+
+- TODO
+- TODO
+
+### Setup pm2:
+
+```shell
+  npm i -g pm2
+  pm2 startup
+  sudo env PATH=$PATH:/home/pi/.nvm/versions/node/v22.14.0/bin /home/pi/.nvm/versions/node/v22.14.0/lib/node_modules/pm2/bin/pm2 startup systemd -u pi --hp /home
+  pm2 start npm --name "TRILL" -- start
+  pm2 save
+  pm2 logs
+```

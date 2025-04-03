@@ -10,6 +10,7 @@
     "node-gyp": "^9.0.0"
   },
   "scripts": {
+    "start": "node index.js",
     "install": "node-gyp rebuild",
     "build": "node-gyp rebuild"
   }
