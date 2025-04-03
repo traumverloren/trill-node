@@ -17,7 +17,7 @@ try {
 
 
     for (const sensor of sensors) {
-    	sensor.setNoiseThreshold(0.0625);
+    	sensor.setNoiseThreshold(0.04);
     	sensor.setPrescaler(2);
     	sensor.updateBaseline();
         sensor.printDetails();
