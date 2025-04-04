@@ -25,11 +25,21 @@ try {
 
     function readAndPrintChannels() {
         let locations = [];
-        // Read from each sensor
+        let touchedLocations = [];
+
+	// Read from each sensor
         sensors.forEach((device, index) => {
             device.readI2C();
             const rawDataArray = device.getRawData();
             const hasTouch = (currentValue) => currentValue > 0.01;
+
+            // FOR DEBUGGING PURPOSES ONLY!
+            if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
+                const address = sensorAddresses[index].toString(16);
+                const touchedIndexes = rawDataArray.reduce((acc, value, index) => acc.concat(value > 0.01 && value !== 8 && value !== 0.03125 ? [address,index,value] : []), []);
+                touchedLocations.push(touchedIndexes);
+            }
+
             const address = `0x${sensorAddresses[index].toString(16)}`;
 
             // correlate the rawDataArray with the json data
@@ -37,7 +47,13 @@ try {
             locations = locations.concat(correlatedData);
         });
 
-        console.log(locations.join(" "));
+
+	// FOR DEBUGGING PURPOSES ONLY!
+        if (touchedLocations.length > 0) {
+          console.log(touchedLocations.flat(Infinity).join(" "));
+          //console.log(locations.join(" "));
+        }
+
         client.send(locations.join(" "), 3002, 'localhost');
     }
 
