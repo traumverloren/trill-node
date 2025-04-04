@@ -1,7 +1,7 @@
-
 const trill = require('./build/Release/trill');
 const dgram = require('node:dgram');
 const client = dgram.createSocket('udp4');
+const jsonData = require('./locations_transformed.json');
 
 try {
     // Create array of sensor addresses
@@ -24,26 +24,21 @@ try {
     }
 
     function readAndPrintChannels() {
-        let touchedLocations = [];
+        let locations = [];
         // Read from each sensor
         sensors.forEach((device, index) => {
             device.readI2C();
             const rawDataArray = device.getRawData();
             const hasTouch = (currentValue) => currentValue > 0.01;
-            
-            if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
-                const address = sensorAddresses[index].toString(16);
-                // console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, {...rawDataArray});
-                const touchedIndexes = rawDataArray.reduce((acc, value, index) => acc.concat(value > 0.01 && value !== 8 && value !== 0.03125 ? [address,index,value] : []), []);
-                // console.log(touchedIndexes);
-                touchedLocations.push(touchedIndexes);
-            }
+            const address = `0x${sensorAddresses[index].toString(16)}`;
+
+            // correlate the rawDataArray with the json data
+            const correlatedData = jsonData.find(node => node.address === address).locations.filter((location, index) => location.id === index).flatMap(location => [location.coordinates, rawDataArray[location.id]]);
+            locations = locations.concat(correlatedData);
         });
-        
-        if (touchedLocations.length > 0) {
-        console.log(touchedLocations.flat(Infinity).join(" "));
-            client.send(touchedLocations.flat(Infinity).join(" "), 3002, 'localhost');
-        }
+
+        console.log(locations.join(" "));
+        client.send(locations.join(" "), 3002, 'localhost');
     }
 
     // Read sensors every 50ms
