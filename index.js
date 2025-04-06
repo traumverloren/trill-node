@@ -42,9 +42,11 @@ try {
         });
 
         if (touchedLocations.length > 0) {
-            console.log(touchedLocations.join(" "));
-            client.send(touchedLocations.join(" "), 3002, 'localhost');
-            client.send(touchedLocations.join(" "), 3002, '192.168.178.95');
+	    const locationsString = touchedLocations.flat().join(" "); 
+	    console.log(locationsString);
+            console.log(locationsString);
+            client.send(locationsString, 3002, 'localhost');
+            client.send(locationsString, 3002, '192.168.178.95');
         }
     }
 
