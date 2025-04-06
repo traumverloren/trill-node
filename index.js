@@ -32,7 +32,7 @@ try {
             const rawDataArray = device.getRawData();
             const hasTouch = (currentValue) => currentValue > 0.01;
             if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
-                const address = sensorAddresses[index].toString(16);
+                const address = `0x${sensorAddresses[index].toString(16)}`;
                 // correlate the rawDataArray with the json data
                 const touchedIndexes = rawDataArray.flatMap((value, index) => value > 0.01 && value !== 8 && value !== 0.03125 ? [index] : []);
                 const correlatedData = jsonData.find(node => node.address === address).locations.filter((location) => touchedIndexes.includes(location.id)).flatMap(location => location.coordinates);
