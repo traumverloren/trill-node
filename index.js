@@ -33,16 +33,18 @@ try {
             const hasTouch = (currentValue) => currentValue > 0.01;
             if (rawDataArray.length > 0 && rawDataArray.some(hasTouch)) {
                 const address = sensorAddresses[index].toString(16);
-                // console.log(`Sensor ${index} (0x${sensorAddresses[index].toString(16)}) values:`, {...rawDataArray});
-                const touchedIndexes = rawDataArray.reduce((acc, value, index) => acc.concat(value > 0.01 && value !== 8 && value !== 0.03125 ? [address,index,value] : []), []);
-                // console.log(touchedIndexes);
-                touchedLocations.push(touchedIndexes);
+                // correlate the rawDataArray with the json data
+                const touchedIndexes = rawDataArray.flatMap((value, index) => value > 0.01 && value !== 8 && value !== 0.03125 ? [index] : []);
+                const correlatedData = jsonData.find(node => node.address === address).locations.filter((location) => touchedIndexes.includes(location.id)).flatMap(location => location.coordinates);
+                console.log(touchedIndexes.join(" "));
+                touchedLocations.push(correlatedData);
             }
         });
 
         if (touchedLocations.length > 0) {
-        console.log(touchedLocations.flat(Infinity).join(" "));
-            client.send(touchedLocations.flat(Infinity).join(" "), 3002, 'localhost');
+            console.log(touchedLocations.join(" "));
+            client.send(touchedLocations.join(" "), 3002, 'localhost');
+            client.send(touchedLocations.join(" "), 3002, '192.168.178.95');
         }
     }
 
