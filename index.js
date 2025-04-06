@@ -42,8 +42,7 @@ try {
         });
 
         if (touchedLocations.length > 0) {
-	    const locationsString = touchedLocations.flat().join(" "); 
-	    console.log(locationsString);
+            const locationsString = touchedLocations.flat().join(" "); 
             console.log(locationsString);
             client.send(locationsString, 3002, 'localhost');
             client.send(locationsString, 3002, '192.168.178.95');
