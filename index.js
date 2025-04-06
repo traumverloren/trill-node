@@ -36,7 +36,7 @@ try {
                 // correlate the rawDataArray with the json data
                 const touchedIndexes = rawDataArray.flatMap((value, index) => value > 0.01 && value !== 8 && value !== 0.03125 ? [index] : []);
                 const correlatedData = jsonData.find(node => node.address === address).locations.filter((location) => touchedIndexes.includes(location.id)).flatMap(location => location.coordinates);
-                console.log(touchedIndexes.join(" "));
+                console.log(`${address}: ${touchedIndexes.join(" ")}`);
                 touchedLocations.push(correlatedData);
             }
         });
