@@ -311,7 +311,7 @@
 #X connect 37 0 36 0;
 #X connect 38 0 37 0;
 #X restore 1153 360 pd data_recive;
-#N canvas 0 25 1440 847 bell_synth 1;
+#N canvas 0 25 1440 847 bell_synth 0;
 #X obj 292 537 *~;
 #X obj 257 365 vline~;
 #X obj 276 400 *~;
@@ -341,7 +341,7 @@
 #X msg 271 332 1 1;
 #X obj 238 309 delay 2;
 #X msg 216 333 0 1000;
-#N canvas 0 25 1440 847 chord_scale 1;
+#N canvas 0 25 1440 847 chord_scale 0;
 #X obj 187 183 inlet;
 #X obj 225 599 outlet;
 #X msg 107 339 60;
