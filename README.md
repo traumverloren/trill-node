@@ -17,8 +17,10 @@ npm run build
 
 ### Setup pure data patch to run on boot
 
-- TODO
-- TODO
+- cd `/etc/xdg/labwc`
+- `sudo nano autostart`
+- Add line `pd -nogui /home/pi/projects/trill-node/'Ambient test.pd' &`
+- `sudo reboot now`
 
 ### Setup pm2:
 
@@ -30,3 +32,6 @@ npm run build
   pm2 save
   pm2 logs
 ```
+
+To restart: `pm2 restart TRILL`
+To stop: `pm2 stop TRILL`
