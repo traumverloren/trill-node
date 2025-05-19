@@ -10,8 +10,6 @@ A sound art installation for Future Frontend 2025
 
 ![back side of art](images/backside.png)
 
-<video src='images/plushy-music.mov' />
-
 ## Installation
 
 ```bash
