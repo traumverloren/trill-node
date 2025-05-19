@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Node.js binding for Trill sensor",
   "main": "index.js",
-  "dependencies": {
-    "node-addon-api": "^5.0.0"
-  },
   "scripts": {
     "start": "node index.js",
     "install": "node-gyp rebuild",
     "build": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.3.1"
   }
 }
