@@ -50,7 +50,7 @@ try {
     }
 
     // Read sensors every 50ms
-    setInterval(readAndPrintChannels, 50);
+    setInterval(readAndPrintChannels, 10);
 
 
 } catch (err) {
