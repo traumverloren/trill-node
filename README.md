@@ -1,12 +1,21 @@
 # Trill Node
 
-A Node Wrapper for many, many Trill conductive touch sensors
+A C++ Wrapper for detecting touch for many, many Trill conductive touch sensors from a Node.js app.
+
+Touches are transformed into a lo-fi dreamy melody using PureData.
 
 A sound art installation for Future Frontend 2025
+
+![front side of art](images/frontside.png)
+
+![back side of art](images/backside.png)
+
+<video src='images/plushy-music.mov' />
 
 ## Installation
 
 ```bash
+npm i
 npm run build
 ```
 
