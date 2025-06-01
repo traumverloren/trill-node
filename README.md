@@ -2,7 +2,7 @@
 
 ![front side of art](images/frontside.png)
 
-Node.js app code & PureData patch for a yayoi kusama inspired touch+sound installation. Basically, it's a C++ wrapper in JS for detecting touch for many, many (236 to be exact) Bela trill craft conductive touch sensors.
+Node.js app code & PureData patch for a yayoi kusama inspired touch+sound installation. Basically, it's a C++ wrapper in JS for detecting touch for many, many (236 to be exact) plushy touch points using 8 Bela trill craft conductive touch sensors.
 
 Painstakingly constructed by hand - freehand sewn by machine, polka-dotted by hand, wire and assembled by hand.
 
