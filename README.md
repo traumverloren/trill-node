@@ -2,8 +2,6 @@
 
 ![front side of art](images/frontside.png)
 
-A sound art installation for Future Frontend 2025 in Helsinki
-
 Node.js app code & PureData patch for a yayoi kusama inspired touch+sound installation. Basically, it's a C++ wrapper in JS for detecting touch for many, many Trill conductive touch sensors.
 
 Painstakingly constructed by hand - freehand sewed by machine, polka-dotted by hand, wire and assembled by hand.
@@ -11,6 +9,10 @@ Painstakingly constructed by hand - freehand sewed by machine, polka-dotted by h
 Touches are transformed into lo-fi dreamy melodies using PureData.
 
 Made for our home + exhibited as a sound art installation for Future Frontend Conf 2025 in Helsinki.
+
+## Demo
+
+https://github.com/user-attachments/assets/a44ee7c9-2a87-442c-a1f0-e459439cff83
 
 ## Project design
 
